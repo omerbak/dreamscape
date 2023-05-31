@@ -3,7 +3,6 @@
 import SectionHeader from "./SectionHeader";
 import DestinationsSlider from "./DestinationsSlider";
 import { motion } from "framer-motion";
-import Reveal from "./Reveal";
 
 const Destinations = () => {
   return (

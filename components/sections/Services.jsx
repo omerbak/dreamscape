@@ -1,14 +1,11 @@
-"use client";
 import SectionHeader from "../SectionHeader";
 import Image from "next/image";
 import image from "../../public/images_compressed/vinessa.jpg";
 import Service from "../Service";
-import Reveal from "../Reveal";
 
 const Services = () => {
   return (
     <section className="mt-32" id="services">
-      {/* <Reveal> */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-20">
         <SectionHeader title="Services" num={3}>
           Your Dream Vacation, Our Expertise: We Help You Make Your Travel
@@ -41,7 +38,6 @@ const Services = () => {
           </div>
         </div>
       </div>
-      {/* </Reveal> */}
     </section>
   );
 };

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Triangle } from "react-loader-spinner";
+import { InfinitySpin } from "react-loader-spinner";
 
 const WebsiteLoader = () => {
   const [showLoader, setShowLoader] = useState(true);
@@ -25,15 +25,7 @@ const WebsiteLoader = () => {
     <>
       {showLoader && (
         <div className="fixed w-full h-full bg-mainColor flex justify-center items-center z-[100]">
-          <Triangle
-            height="200"
-            width="100"
-            color="#000000"
-            ariaLabel="triangle-loading"
-            wrapperStyle={{}}
-            wrapperClassName=""
-            visible={true}
-          />
+          <InfinitySpin width="250" color="#000000" />
         </div>
       )}
     </>

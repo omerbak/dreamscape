@@ -1,4 +1,3 @@
-"use client";
 import SectionHeader from "./SectionHeader";
 import Image from "next/image";
 import image1 from "../public/images_compressed/mountain.jpg";
@@ -9,7 +8,6 @@ const AboutSection = () => {
   return (
     <div>
       <section id="aboutUs" className=" mt-32">
-        {/* <Reveal> */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-20">
           <SectionHeader title="About Us" num={2}>
             Dreamscape is a travel agency that helps you plan unforgettable
@@ -56,7 +54,6 @@ const AboutSection = () => {
             </div>
           </div>
         </div>
-        {/* </Reveal> */}
       </section>
     </div>
   );

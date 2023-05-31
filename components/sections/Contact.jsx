@@ -2,7 +2,6 @@
 import SectionHeader from "../SectionHeader";
 import Image from "next/image";
 import image from "../../public/images_compressed/main_bg.jpg";
-import Reveal from "../Reveal";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { addMessageFirestore } from "@/lib/firebase";

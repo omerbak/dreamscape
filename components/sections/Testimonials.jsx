@@ -1,7 +1,5 @@
-"use client";
 import TestimonialCard from "../TestimonialCard";
 import SectionHeader from "../SectionHeader";
-import Reveal from "../Reveal";
 import avatar1 from "../../public/images_compressed/avatar1.png";
 import avatar2 from "../../public/images_compressed/avatar2.png";
 import avatar3 from "../../public/images_compressed/avatar.png";
@@ -9,7 +7,6 @@ import avatar3 from "../../public/images_compressed/avatar.png";
 const Testimonials = () => {
   return (
     <section className=" my-32" id="testimonials">
-      {/* <Reveal> */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-20">
         <SectionHeader title="Testimonials" num={4}>
           Dreamscape Customers Love Us!
@@ -52,7 +49,6 @@ const Testimonials = () => {
           </TestimonialCard>
         </div>
       </div>
-      {/* </Reveal> */}
     </section>
   );
 };
