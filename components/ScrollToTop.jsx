@@ -30,11 +30,11 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", checkBtn);
-    console.log("scroll listener added");
+    //console.log("scroll listener added");
 
     return () => {
       window.removeEventListener("scroll", checkBtn);
-      console.log("scroll listener removed");
+      //console.log("scroll listener removed");
     };
   }, []);
 

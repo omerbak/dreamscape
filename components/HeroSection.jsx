@@ -63,13 +63,9 @@ const HeroSection = () => {
     });
   };
   return (
-    <div
-      id="hero-section"
-      className="h-[100vh] relative w-full overflow-hidden"
-    >
+    <section id="hero-section" className="h-[100vh] relative w-full">
       <div className="container mx-auto px-4 sm:px-6 lg:px-20">
-        <Nav />
-        <div id="hero-text" className="relative mt-40 ">
+        <div id="hero-text" className="relative pt-52 ">
           <motion.h1
             variants={h1Variants}
             initial="hidden"
@@ -111,7 +107,7 @@ const HeroSection = () => {
       >
         <i class="ri-arrow-down-double-fill text-white text-3xl p-1 transition hover:bg-white hover:text-darkBg rounded-full"></i>
       </motion.div>
-    </div>
+    </section>
   );
 };
 
