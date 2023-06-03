@@ -8,7 +8,7 @@ const btnVariants = {
     y: 500,
   },
   show: {
-    opacity: 1,
+    opacity: 0.4,
     y: 0,
     transition: {
       duration: 0.5,
@@ -62,6 +62,7 @@ const ScrollToTop = () => {
           }}
           whileHover={{
             translateY: -5,
+            opacity: 1,
           }}
         >
           <i class="ri-arrow-up-double-fill text-2xl md:text-3xl p-1 transition bg-white text-darkBg rounded-full"></i>
