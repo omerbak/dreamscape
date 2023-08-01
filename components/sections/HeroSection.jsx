@@ -1,7 +1,7 @@
 "use client";
 
-import Nav from "./Nav";
-import SocialIcons from "./SocialIcons";
+import Nav from "../Nav";
+import SocialIcons from "../SocialIcons";
 import { motion } from "framer-motion";
 
 const h1Variants = {

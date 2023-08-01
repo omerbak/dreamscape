@@ -1,8 +1,8 @@
-import SectionHeader from "./SectionHeader";
+import SectionHeader from "../SectionHeader";
 import Image from "next/image";
-import image1 from "../public/images_compressed/mountain.jpg";
-import image2 from "../public/images_compressed/mile.jpg";
-import Reveal from "./Reveal";
+import image1 from "../../public/images_compressed/mountain.jpg";
+import image2 from "../../public/images_compressed/mile.jpg";
+import Reveal from "../Reveal";
 
 const AboutSection = () => {
   return (

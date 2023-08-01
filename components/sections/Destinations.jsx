@@ -1,7 +1,7 @@
 "use client";
 
-import SectionHeader from "./SectionHeader";
-import DestinationsSlider from "./DestinationsSlider";
+import SectionHeader from "../SectionHeader";
+import DestinationsSlider from "../DestinationsSlider";
 import { motion } from "framer-motion";
 
 const Destinations = () => {

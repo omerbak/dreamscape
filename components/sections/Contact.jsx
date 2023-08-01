@@ -5,32 +5,38 @@ import image from "../../public/images_compressed/main_bg.jpg";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { addMessageFirestore } from "@/lib/firebase";
-
+import { useFormik } from "formik";
+import { basicSchema } from "@/lib/yupSchema";
+import { ThreeDots } from "react-loader-spinner";
 const Contact = () => {
-  const [formInfo, setFormInfo] = useState({
-    name: "",
-    email: "",
-    text: "",
+  const onSubmit = async (values, actions) => {
+    await new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log(values);
+        console.log(actions);
+        resolve("success");
+        actions.resetForm();
+      }, 2000);
+    });
+  };
+  const {
+    values,
+    errors,
+    touched,
+    isSubmitting,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+  } = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+    validationSchema: basicSchema,
+    onSubmit,
   });
-  const [loading, setLoading] = useState(false);
-  function handleFormChange(e) {
-    const { name, value } = e.target;
-    setFormInfo((prev) => ({ ...prev, [name]: value }));
-  }
 
-  function handleFormSubmit(e) {
-    e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      addMessageFirestore(formInfo);
-      setFormInfo({
-        name: "",
-        email: "",
-        text: "",
-      });
-      setLoading(false);
-    }, 1000);
-  }
   return (
     <section className=" mt-32" id="contact">
       {/*  <Reveal> */}
@@ -45,7 +51,7 @@ const Contact = () => {
           <form
             action=""
             className="w-full md:w-1/2 p-6"
-            onSubmit={handleFormSubmit}
+            onSubmit={handleSubmit}
           >
             <div className="w-full gap-2 mb-4">
               <label htmlFor="name" className="block text-mainColor mb-1">
@@ -53,13 +59,25 @@ const Contact = () => {
               </label>
               <input
                 id="name"
-                type="text"
                 name="name"
-                value={formInfo.name}
-                onChange={handleFormChange}
+                type="text"
+                value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 placeholder="Enter your name"
-                className="border focus:border-mainColor border-white w-full p-3 bg-transparent rounded-md outline-none text-white"
+                className={`border  w-full p-3 bg-transparent rounded-md outline-none text-white 
+                ${
+                  errors.name && touched.name
+                    ? "border-red-400 "
+                    : "border-white focus:border-mainColor"
+                }`}
               />
+              <span
+                className={`text-red-400  h-[20px] block ml-1
+                }`}
+              >
+                {errors.name && touched.name && errors.name}
+              </span>
             </div>
             <div className="w-full gap-2 mb-4">
               <label htmlFor="email" className="block text-mainColor mb-1">
@@ -69,11 +87,20 @@ const Contact = () => {
                 id="email"
                 type="text"
                 name="email"
-                value={formInfo.email}
-                onChange={handleFormChange}
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 placeholder="Enter your Email"
-                className="border focus:border-mainColor border-white w-full p-3 bg-transparent rounded-md outline-none text-white"
+                className={`border  w-full p-3 bg-transparent rounded-md outline-none text-white 
+                ${
+                  errors.email && touched.email
+                    ? "border-red-400 "
+                    : "border-white focus:border-mainColor"
+                }`}
               />
+              <span className="text-red-400  h-[20px] block ml-1">
+                {errors.email && touched.email ? errors.email : null}
+              </span>
             </div>
             <div className="w-full gap-2 ">
               <label htmlFor="email" className="block text-mainColor mb-1">
@@ -86,20 +113,42 @@ const Contact = () => {
                   className="border focus:border-mainColor border-white w-full p-3 bg-transparent rounded-md outline-none text-white"
                 /> */}
               <textarea
-                name="text"
-                id="text"
-                value={formInfo.text}
-                onChange={handleFormChange}
+                name="message"
+                id="message"
+                value={values.message}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 placeholder="Enter your message "
-                className="min-h-[300px] border focus:border-mainColor border-white w-full p-3 bg-transparent rounded-md outline-none text-white"
+                className={`min-h-[300px] border w-full p-3 bg-transparent rounded-md outline-none text-white 
+                ${
+                  errors.message && touched.message
+                    ? "border-red-400 "
+                    : "border-white focus:border-mainColor"
+                }`}
               ></textarea>
+              <span className="text-red-400 h-[20px] block ml-1">
+                {errors.message && touched.message ? errors.message : null}
+              </span>
             </div>
             <motion.button
-              className="px-7 py-3 bg-mainColor text-white rounded-md mt-3 font-semibold"
+              className="px-7 py-3 bg-mainColor text-white rounded-md mt-3 font-semibold flex justify-center items-center"
               whileHover={{ scale: 1.1 }}
               type="submit"
             >
-              {loading ? "loading..." : "Submit"}
+              {isSubmitting ? (
+                <ThreeDots
+                  height="25"
+                  width="50"
+                  radius="9"
+                  color="white"
+                  ariaLabel="three-dots-loading"
+                  wrapperStyle={{}}
+                  wrapperClassName=""
+                  visible={true}
+                />
+              ) : (
+                "Submit"
+              )}
             </motion.button>
           </form>
         </div>
