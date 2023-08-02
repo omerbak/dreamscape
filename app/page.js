@@ -11,17 +11,19 @@ import Nav from "@/components/Nav";
 
 export default function Home() {
   return (
-    <main className=" bg-darkBg ">
-      <Nav />
-      <WebsiteLoader />
-      <HeroSection />
-      <Destinations />
-      <AboutSection />
-      <Services />
-      <Testimonials />
-      <Contact />
-      <ScrollToTop />
-      <Footer />
-    </main>
+    <>
+      <main className=" bg-darkBg ">
+        <Nav />
+        <WebsiteLoader />
+        <HeroSection />
+        <Destinations />
+        <AboutSection />
+        <Services />
+        <Testimonials />
+        <Contact />
+        <ScrollToTop />
+        <Footer />
+      </main>
+    </>
   );
 }

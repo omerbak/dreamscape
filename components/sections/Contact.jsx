@@ -8,16 +8,34 @@ import { addMessageFirestore } from "@/lib/firebase";
 import { useFormik } from "formik";
 import { basicSchema } from "@/lib/yupSchema";
 import { ThreeDots } from "react-loader-spinner";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+
 const Contact = () => {
   const onSubmit = async (values, actions) => {
-    await new Promise((resolve, reject) => {
-      setTimeout(() => {
-        console.log(values);
-        console.log(actions);
-        resolve("success");
-        actions.resetForm();
-      }, 2000);
+    const res = await fetch("http://localhost:3001/form/submitForm", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: values.name,
+        email: values.email,
+        message: values.message,
+      }),
     });
+    console.log(res);
+    if (res.status === 200) {
+      toast.success(
+        "Thank you for contacting us, We will get back to you soon!",
+        { position: "top-center", type: "success" }
+      );
+      actions.resetForm();
+    } else {
+      console.log("toast showd appear");
+      toast(
+        "Sorry we are having some problemes at the moment, try agian later!",
+        { position: "top-center", type: "error" }
+      );
+    }
   };
   const {
     values,
@@ -153,6 +171,7 @@ const Contact = () => {
           </form>
         </div>
       </div>
+      <ToastContainer />
       {/* </Reveal> */}
     </section>
   );
