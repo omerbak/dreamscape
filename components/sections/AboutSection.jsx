@@ -19,6 +19,8 @@ const AboutSection = () => {
                 src={image1}
                 alt="mountain image"
                 className="w-[60%] h-[300px] absolute top-0 left-0 z-20 object-cover rounded-md"
+                placeholder="blur"
+                sizes="(max-width: 768px) 40vw, 25vw"
               />
               <Image
                 src={image2}

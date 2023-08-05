@@ -17,6 +17,8 @@ const Services = () => {
               src={image}
               alt="I'm not sure but the city looks like vinessa"
               className="max-w-full rounded-md object-cover h-[300px] md:h-full md:max-h-[500px] object-bottom "
+              sizes="(max-width: 768px) 100vw, 33vw"
+              placeholder="blur"
             />
           </div>
           <div className="md:w-2/3 space-y-3">

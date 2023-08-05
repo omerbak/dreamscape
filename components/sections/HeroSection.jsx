@@ -3,6 +3,8 @@
 import Nav from "../Nav";
 import SocialIcons from "../SocialIcons";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import heroBg from "../../public/images_compressed/hero_bg.jpg";
 
 const h1Variants = {
   hidden: {
@@ -63,8 +65,17 @@ const HeroSection = () => {
     });
   };
   return (
-    <section id="hero-section" className="h-[100vh] relative w-full">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-20">
+    <section
+      id="hero-section"
+      className="h-[100vh] relative w-full overflow-hidden"
+    >
+      <Image
+        src={heroBg}
+        sizes="100vw"
+        className=" absolute object-cover w-full h-full object-top"
+      />
+      <div className=" absolute w-full h-full left-0 top-0 bg-gradient-to-b from-[#20201e4d] to-[#20201e]"></div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-20 relative">
         <div id="hero-text" className="relative pt-52 ">
           <motion.h1
             variants={h1Variants}

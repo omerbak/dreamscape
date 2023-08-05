@@ -13,24 +13,31 @@ import { ToastContainer } from "react-toastify";
 
 const Contact = () => {
   const onSubmit = async (values, actions) => {
-    const res = await fetch("http://localhost:3001/form/submitForm", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: values.name,
-        email: values.email,
-        message: values.message,
-      }),
-    });
-    console.log(res);
-    if (res.status === 200) {
-      toast.success(
-        "Thank you for contacting us, We will get back to you soon!",
-        { position: "top-center", type: "success" }
-      );
-      actions.resetForm();
-    } else {
-      console.log("toast showd appear");
+    try {
+      const res = await fetch("http://localhost:3001/form/submitForm", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          message: values.message,
+        }),
+      });
+      console.log(res);
+      if (res.status === 200) {
+        toast.success(
+          "Thank you for contacting us, We will get back to you soon!",
+          { position: "top-center", type: "success" }
+        );
+        actions.resetForm();
+      } else {
+        console.log("toast showd appear");
+        toast(
+          "Sorry we are having some problemes at the moment, try agian later!",
+          { position: "top-center", type: "error" }
+        );
+      }
+    } catch (err) {
       toast(
         "Sorry we are having some problemes at the moment, try agian later!",
         { position: "top-center", type: "error" }
@@ -64,7 +71,12 @@ const Contact = () => {
         </SectionHeader>
         <div className="flex  bg-darkBg2 rounded-md overflow-hidden items-center">
           <div className="w-1/2 overflow-hidden hidden md:block ">
-            <Image src={image} className="h-[600px] object-cover object-top" />
+            <Image
+              src={image}
+              className="h-[700px] object-cover object-top"
+              sizes="50vw"
+              placeholder="blur"
+            />
           </div>
           <form
             action=""

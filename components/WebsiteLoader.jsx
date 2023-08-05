@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import { InfinitySpin } from "react-loader-spinner";
 
 const WebsiteLoader = () => {
-  const [showLoader, setShowLoader] = useState(true);
+  const [showLoader, setShowLoader] = useState(false);
 
   function changeLoader() {
     /*  setTimeout(() => {
       setShowLoader((prev) => !prev);
     }, 3000); */
-    setShowLoader((prev) => !prev);
+    setShowLoader((prev) => false);
   }
 
   useEffect(() => {
