@@ -4,6 +4,7 @@ import logo from "../public/Dreamscape-logo/vector/default-monochrome.svg";
 import whiteLogo from "../public/Dreamscape-logo/vector/default-monochrome-white.svg";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 const navVarinats = {
   hidden: {
@@ -77,17 +78,17 @@ const Nav = () => {
               <nav aria-label="Site Nav" className="hidden md:block">
                 <ul className="flex items-center gap-6 text-sm">
                   <li>
-                    <a
-                      className="text-white  transition hover:text-darkBg"
-                      href="/"
+                    <Link
+                      className="text-white  transition hover:text-mainColor"
+                      href="/destinations"
                     >
                       Destinations
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
                     <a
-                      className="text-white  transition hover:text-darkBg"
+                      className="text-white  transition hover:text-mainColor"
                       href="/"
                     >
                       About us
@@ -95,17 +96,14 @@ const Nav = () => {
                   </li>
 
                   <li>
-                    <a
-                      className="text-white  transition hover:text-darkBg"
-                      href="/"
-                    >
+                    <a className="text-white  transition hover:text-mainColor">
                       Services
                     </a>
                   </li>
 
                   <li>
                     <a
-                      className="text-white  transition hover:text-darkBg"
+                      className="text-white  transition hover:text-mainColor"
                       href="/"
                     >
                       Testimonials
@@ -114,7 +112,7 @@ const Nav = () => {
 
                   <li>
                     <a
-                      className="text-white transition hover:text-darkBg"
+                      className="text-white transition hover:text-mainColor"
                       href="/"
                     >
                       Contact
