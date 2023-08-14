@@ -7,7 +7,7 @@ import Reveal from "../Reveal";
 const AboutSection = () => {
   return (
     <div>
-      <section id="aboutUs" className=" mt-32">
+      <section id="aboutUs" className="mt-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-20">
           <SectionHeader title="About Us" num={2}>
             Dreamscape is a travel agency that helps you plan unforgettable

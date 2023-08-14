@@ -68,10 +68,10 @@ const Nav = () => {
         <div className="">
           <div className="flex h-16 items-center justify-between">
             <div className="flex-1 md:flex md:items-center md:gap-12">
-              <a className="block text-teal-600" href="/">
+              <Link className="block text-teal-600" href="/">
                 <span className="sr-only">Home</span>
                 <Image src={logo} height={30} />
-              </a>
+              </Link>
             </div>
 
             <div className="md:flex md:items-center md:gap-12">
@@ -87,36 +87,39 @@ const Nav = () => {
                   </li>
 
                   <li>
-                    <a
+                    <Link
                       className="text-white  transition hover:text-mainColor"
-                      href="/"
+                      href="/#aboutUs"
                     >
                       About us
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a className="text-white  transition hover:text-mainColor">
-                      Services
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
+                    <Link
                       className="text-white  transition hover:text-mainColor"
-                      href="/"
+                      href="/#services"
+                    >
+                      Services
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link
+                      className="text-white  transition hover:text-mainColor"
+                      href="/#testimonials"
                     >
                       Testimonials
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a
+                    <Link
                       className="text-white transition hover:text-mainColor"
-                      href="/"
+                      href="/#contact"
                     >
                       Contact
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </nav>
