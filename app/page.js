@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <main className=" bg-darkBg ">
-        <Nav />
+        {/*  <Nav /> */}
         <WebsiteLoader />
         <HeroSection />
         <Destinations />

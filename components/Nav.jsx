@@ -4,6 +4,7 @@ import logo from "../public/Dreamscape-logo/vector/default-monochrome.svg";
 import whiteLogo from "../public/Dreamscape-logo/vector/default-monochrome-white.svg";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 const navVarinats = {
   hidden: {
@@ -67,58 +68,58 @@ const Nav = () => {
         <div className="">
           <div className="flex h-16 items-center justify-between">
             <div className="flex-1 md:flex md:items-center md:gap-12">
-              <a className="block text-teal-600" href="/">
+              <Link className="block text-teal-600" href="/">
                 <span className="sr-only">Home</span>
                 <Image src={logo} height={30} />
-              </a>
+              </Link>
             </div>
 
             <div className="md:flex md:items-center md:gap-12">
               <nav aria-label="Site Nav" className="hidden md:block">
                 <ul className="flex items-center gap-6 text-sm">
                   <li>
-                    <a
-                      className="text-white  transition hover:text-darkBg"
-                      href="/"
+                    <Link
+                      className="text-white  transition hover:text-mainColor"
+                      href="/destinations"
                     >
                       Destinations
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a
-                      className="text-white  transition hover:text-darkBg"
-                      href="/"
+                    <Link
+                      className="text-white  transition hover:text-mainColor"
+                      href="/#aboutUs"
                     >
                       About us
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a
-                      className="text-white  transition hover:text-darkBg"
-                      href="/"
+                    <Link
+                      className="text-white  transition hover:text-mainColor"
+                      href="/#services"
                     >
                       Services
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a
-                      className="text-white  transition hover:text-darkBg"
-                      href="/"
+                    <Link
+                      className="text-white  transition hover:text-mainColor"
+                      href="/#testimonials"
                     >
                       Testimonials
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a
-                      className="text-white transition hover:text-darkBg"
-                      href="/"
+                    <Link
+                      className="text-white transition hover:text-mainColor"
+                      href="/#contact"
                     >
                       Contact
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </nav>

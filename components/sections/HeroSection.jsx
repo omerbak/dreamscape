@@ -4,6 +4,7 @@ import Nav from "../Nav";
 import SocialIcons from "../SocialIcons";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import heroBg from "../../public/images_compressed/hero_bg.jpg";
 
 const h1Variants = {
@@ -93,18 +94,20 @@ const HeroSection = () => {
           >
             Your One-Stop Shop for Travel Dreams
           </motion.h3>
-          <motion.button
-            variants={buttonVariants}
-            initial="hidden"
-            animate="show"
-            whileHover={{ scale: 1.1 }}
-            className="flex justify-between items-center gap-3 bg-mainColor md:py-3 md:px-7 py-2 px-5 rounded-md mb-6"
-          >
-            <span className="block text-white font-medium text-md md:text-lg tracking-wide">
-              Start Planning
-            </span>
-            <i class="ri-play-fill text-white text-xl md:text-2xl"></i>
-          </motion.button>
+          <Link href="/destinations">
+            <motion.button
+              variants={buttonVariants}
+              initial="hidden"
+              animate="show"
+              whileHover={{ scale: 1.1 }}
+              className="flex justify-between items-center gap-3 bg-mainColor md:py-3 md:px-7 py-2 px-5 rounded-md mb-6"
+            >
+              <span className="block text-white font-medium text-md md:text-lg tracking-wide">
+                Start Planning
+              </span>
+              <i class="ri-play-fill text-white text-xl md:text-2xl"></i>
+            </motion.button>
+          </Link>
           <SocialIcons gap={2} />
         </div>
       </div>

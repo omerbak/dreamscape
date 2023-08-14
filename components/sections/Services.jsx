@@ -11,14 +11,15 @@ const Services = () => {
           Your Dream Vacation, Our Expertise: We Help You Make Your Travel
           Dreams Come True!
         </SectionHeader>
-        <div className="flex flex-col md:flex-row gap-4 items-center">
-          <div className=" md:w-1/3">
+        <div className="flex flex-col md:flex-row gap-10  items-stretch overflow-hidden">
+          <div className=" md:w-1/3 relative h-[300px] md:h-auto ">
             <Image
               src={image}
               alt="I'm not sure but the city looks like vinessa"
-              className="max-w-full rounded-md object-cover h-[300px] md:h-full md:max-h-[500px] object-bottom "
+              className=" rounded-md object-cover object-bottom  "
               sizes="(max-width: 768px) 100vw, 33vw"
               placeholder="blur"
+              fill
             />
           </div>
           <div className="md:w-2/3 space-y-3">

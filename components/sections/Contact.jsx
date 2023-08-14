@@ -69,7 +69,7 @@ const Contact = () => {
         <SectionHeader num={5} title="Contact Us">
           Let Us Help You Plan Your Dream Vacation. Contact Us Now!
         </SectionHeader>
-        <div className="flex  bg-darkBg2 rounded-md overflow-hidden items-center">
+        <div className="flex gap-2 bg-darkBg2 rounded-md overflow-hidden items-center">
           <div className="w-1/2 overflow-hidden hidden md:block ">
             <Image
               src={image}

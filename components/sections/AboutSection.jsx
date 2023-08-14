@@ -7,13 +7,13 @@ import Reveal from "../Reveal";
 const AboutSection = () => {
   return (
     <div>
-      <section id="aboutUs" className=" mt-32">
+      <section id="aboutUs" className="mt-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-20">
           <SectionHeader title="About Us" num={2}>
             Dreamscape is a travel agency that helps you plan unforgettable
             trips
           </SectionHeader>
-          <div className="flex flex-col md:flex-row items-center gap-20">
+          <div className="flex flex-col md:flex-row items-center gap-10">
             <div className=" md:w-1/3 w-2/3 min-h-[500px] relative ">
               <Image
                 src={image1}
@@ -25,7 +25,7 @@ const AboutSection = () => {
               <Image
                 src={image2}
                 alt="mile image"
-                className="w-[60%] h-[350px] absolute bottom-0 right-0 z-20 object-cover rounded-md"
+                className="w-[60%] h-[350px] absolute bottom-10 md:bottom-0 right-0 z-20 object-cover rounded-md"
               />
             </div>
             <div className="md:w-2/3 text-white">
