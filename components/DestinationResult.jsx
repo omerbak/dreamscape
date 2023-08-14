@@ -6,7 +6,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const DestinationResult = ({ country }) => {
   const { data, error, isLoading } = useSWR(
-    `http://localhost:3001/destinations/getDestination?country=${country}`,
+    `https://dreamscape-api-iswd.onrender.com/destinations/getDestination?country=${country}`,
     fetcher
   );
   console.log(data);
