@@ -14,15 +14,18 @@ import { ToastContainer } from "react-toastify";
 const Contact = () => {
   const onSubmit = async (values, actions) => {
     try {
-      const res = await fetch("http://localhost:3001/form/submitForm", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: values.name,
-          email: values.email,
-          message: values.message,
-        }),
-      });
+      const res = await fetch(
+        "https://dreamscape-api-iswd.onrender.com/form/submitForm",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: values.name,
+            email: values.email,
+            message: values.message,
+          }),
+        }
+      );
       console.log(res);
       if (res.status === 200) {
         toast.success(
