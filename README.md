@@ -1,46 +1,26 @@
-# About the project
+# Dreamscape Travel Agency
+It is a full-stack next-js web app where users can contact the agency, learn more about the agency and discover available destinations.
+The goal of this project was to go through the process of designing and development from scratch using the latest tools and technologies.
 
-this is a one page website for a ficional travel agency calle Dreamscape
-the goal of this project was to practice the process of design and develpment of a website usig different tools and technologies.
+**link to project:** https://dreamscape-travel-agency.netlify.app
+<br></br>
+![xcwxc](https://ik.imagekit.io/fgnrlp6iw/dreamscap.PNG?updatedAt=1692196715060)
+<br></br>
+## How is it made:
+### Tools used:
+* Figma for design
+* Next-js-13 for the frotend
+* Express-js for the backend
+* MongoDB for the database
+* Tailwind css for styling
+* Formik and Yup for form validation
+* Bard ai for text content
+* Namecheap logo generator the logo desing
+* Remix-icons for the website icons
+* Netlify for hosting
 
-# Tools Used
-
-1- Figma for design
-2- Next-js-13 for development
-3- Tailwind css for styling
-4- Bard ai for the comapny name the text content
-5- Namecheap logo generator the logo desing
-6- Remix-icons for the website icons
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Lessons Learned: 
+* This project helped me deepen my understanding of next-js 13 and how to use the differents methods of rendering.
+* I learned the importance of Image optimization and how next-js can handle the process.
+* I also learned how to use tailwindcss to perform complex styling.
+* I alson learned to build RestApi usnig MVC architecture that performs CRUD operation on MongoDB database.
