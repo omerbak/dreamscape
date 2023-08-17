@@ -1,10 +1,9 @@
 # More features to add to the project
 
-1- Crausol using framer motion
-2- scroll on click fro the hero section button
-3- submit the form to a firestore DB
-4- reveal on scroll for website sections
-5- fix navigation
-1- make it stick on scroll and it change it's background
-2- make the navigation appear for the mobile
-6- add button to enable users to scroll to the top
+- [X] Crausol for destinations section using framer motion
+- [X] Submit the form to a MongoDB
+- [X] Add button to enable users to scroll to the top
+- [ ] Integrate a rule-based authentification using Next-Auth
+- [ ] Enable authenticated users to make a reservation
+- [ ] Add a page where users can see their previous reservation
+- [ ] Add a page for admins so the can be able to add new destinations
