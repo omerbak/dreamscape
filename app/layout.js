@@ -4,6 +4,7 @@ import "remixicon/fonts/remixicon.css";
 import "react-toastify/dist/ReactToastify.css";
 import Nav from "@/components/Nav";
 const inter = Inter({ subsets: ["latin"] });
+import AuthProvider from "@/components/AuthProvider";
 
 export const metadata = {
   title: "Dreamescape",
@@ -14,7 +15,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Nav />
+        <AuthProvider>
+          <Nav />
+        </AuthProvider>
         {children}
       </body>
     </html>
