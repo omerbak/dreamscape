@@ -2,12 +2,11 @@
 import { useState, useRef, useEffect } from "react";
 import logo from "../public/Dreamscape-logo/vector/default-monochrome.svg";
 import Image from "next/image";
+import AccountImg from "../public/images_compressed/account.jpg";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
-
 import MobileMenu from "./MobileMenu";
-import { redirect } from "next/dist/server/api-utils";
 
 const navVarinats = {
   hidden: {
@@ -89,12 +88,22 @@ const Nav = () => {
                   </li>
                   {session?.user ? (
                     <>
-                      <li className="w-[44px] h-[44px] relative rounded-full overflow-hidden">
-                        <Image src={session.user.image} fill />
+                      <li className="w-[44px] h-[44px] relative rounded-full overflow-hidden cursor-pointer">
+                        <Link href="/account">
+                          <Image
+                            src={
+                              session.user?.image
+                                ? session.user.image
+                                : AccountImg
+                            }
+                            fill
+                            className=" object-cover"
+                          />
+                        </Link>
                       </li>
                       <li>
                         <div
-                          className="bg-transparent rounded-md px-5 py-2 shadow-md border-2 text-gray-300  font-semibold border-gray-300 hover:bg-gray-300 hover:text-gray-900 transition-all cursor-pointer "
+                          className="bg-transparent rounded-md px-5 py-2  border-2 text-white  border-transparent hover:border-white transition-all cursor-pointer "
                           onClick={() => signOut({ redirect: false })}
                         >
                           SignOut
@@ -104,7 +113,7 @@ const Nav = () => {
                   ) : (
                     <li>
                       <Link
-                        className="bg-transparent rounded-md px-5 py-2 shadow-md border-2 text-white font-semibold border-white hover:bg-mainColor hover:border-mainColor hover:text-white transition-all cursor-pointer "
+                        className="bg-transparent rounded-md px-5 py-2  border-2 text-white  border-transparent hover:border-white  transition-all cursor-pointer "
                         href="/sign"
                       >
                         SignIn

@@ -6,42 +6,43 @@ import { ThreeDots } from "react-loader-spinner";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import { signUpSchema } from "@/lib/signupSchema";
-const SignInForm = () => {
+const SignUnForm = () => {
   const onSubmit = async (values, actions) => {
-    console.log(values);
-    /*  try {
-          const res = await fetch(
-            "https://dreamscape-api-iswd.onrender.com/form/submitForm",
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                name: values.name,
-                email: values.email,
-                message: values.message,
-              }),
-            }
-          );
-          console.log(res);
-          if (res.status === 200) {
-            toast.success(
-              "Thank you for contacting us, We will get back to you soon!",
-              { position: "top-center", type: "success" }
-            );
-            actions.resetForm();
-          } else {
-            console.log("toast showd appear");
-            toast(
-              "Sorry we are having some problemes at the moment, try agian later!",
-              { position: "top-center", type: "error" }
-            );
-          }
-        } catch (err) {
-          toast(
-            "Sorry we are having some problemes at the moment, try agian later!",
-            { position: "top-center", type: "error" }
-          ); 
-        }*/
+    try {
+      const res = await fetch("http://localhost:3001/user/addUser", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: values.email,
+          password: values.password,
+          role: "user",
+        }),
+      });
+      console.log("signUp form: ", res);
+      if (res.status === 200) {
+        toast.success("You are singup successfully, Please signIn now", {
+          position: "top-center",
+          type: "success",
+        });
+        actions.resetForm();
+      } else if (res.status === 409) {
+        toast.error("User already existe", {
+          position: "top-center",
+          type: "error",
+        });
+      } else {
+        console.log("toast showd appear");
+        toast(
+          "Sorry we are having some problemes at the moment, try agian later!",
+          { position: "top-center", type: "error" }
+        );
+      }
+    } catch (err) {
+      toast(
+        "Sorry we are having some problemes at the moment, try agian later!",
+        { position: "top-center", type: "error" }
+      );
+    }
   };
   const {
     values,
@@ -55,6 +56,7 @@ const SignInForm = () => {
     initialValues: {
       email: "",
       password: "",
+      confirmPassword: "",
     },
     validationSchema: signUpSchema,
     onSubmit,
@@ -171,4 +173,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default SignUnForm;

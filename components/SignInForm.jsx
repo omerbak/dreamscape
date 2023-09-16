@@ -7,43 +7,27 @@ import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import { signInSchema } from "@/lib/signinSchema";
 import { signIn } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
+
 const SignInForm = () => {
+  const searchParams = useSearchParams();
+  const loginErorr = searchParams.get("error");
+  if (loginErorr) {
+    toast.error("Wrong Password Or Email", {
+      position: "top-center",
+    });
+  }
   const onSubmit = async (values, actions) => {
     console.log(values);
-
-    /*  try {
-          const res = await fetch(
-            "https://dreamscape-api-iswd.onrender.com/form/submitForm",
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                name: values.name,
-                email: values.email,
-                message: values.message,
-              }),
-            }
-          );
-          console.log(res);
-          if (res.status === 200) {
-            toast.success(
-              "Thank you for contacting us, We will get back to you soon!",
-              { position: "top-center", type: "success" }
-            );
-            actions.resetForm();
-          } else {
-            console.log("toast showd appear");
-            toast(
-              "Sorry we are having some problemes at the moment, try agian later!",
-              { position: "top-center", type: "error" }
-            );
-          }
-        } catch (err) {
-          toast(
-            "Sorry we are having some problemes at the moment, try agian later!",
-            { position: "top-center", type: "error" }
-          ); 
-        }*/
+    try {
+      await signIn("credentials", {
+        email: values.email,
+        password: values.password,
+        callbackUrl: "/destinations",
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
   const {
     values,
