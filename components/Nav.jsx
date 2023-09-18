@@ -104,7 +104,7 @@ const Nav = () => {
                       <li>
                         <div
                           className="bg-transparent rounded-md px-5 py-2  border-2 text-white  border-transparent hover:border-white transition-all cursor-pointer "
-                          onClick={() => signOut({ redirect: false })}
+                          onClick={() => signOut({ callbackUrl: "/" })}
                         >
                           SignOut
                         </div>

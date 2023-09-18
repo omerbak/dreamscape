@@ -3,6 +3,7 @@ import { useState } from "react";
 import AuthProvider from "./AuthProvider";
 import Profile from "./Profile";
 import AddDestination from "./AddDestination";
+import MyReservations from "./MyReservations";
 
 const Account = ({ session }) => {
   const [selectedTab, setSelectedTab] = useState(1);
@@ -41,9 +42,11 @@ const Account = ({ session }) => {
                 </li>
               )}
             </ul>
-            <div className="md:text-lg ">
+            <div className="md:text-lg w-full p-2">
               {selectedTab === 1 ? (
                 <Profile session={session} />
+              ) : selectedTab === 2 ? (
+                <MyReservations session={session} />
               ) : selectedTab === 3 ? (
                 <AddDestination session={session} />
               ) : null}

@@ -27,16 +27,32 @@ const AddDestination = ({ session }) => {
       console.log(key);
     } */
     //console.log(typeof formData.get("photos"));
-    console.log(...formData);
-    const res = await fetch(
-      "http://localhost:3001/destinations/addDestination",
-      {
-        method: "POST",
-        body: formData,
+    //console.log(...formData);
+    try {
+      const res = await fetch(
+        "http://localhost:3001/destinations/addDestination",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      const data = await res.json();
+      console.log(data);
+      if (res.status == 200) {
+        toast.success("Destination added successfully", {
+          position: "top-center",
+          type: "success",
+        });
+        actions.resetForm();
+        values.photos = null;
       }
-    );
-    const data = await res.json();
-    console.log(data);
+    } catch (err) {
+      console.log(err);
+      toast.error("Sorry can't add destination at the momement", {
+        position: "top-center",
+        type: "error",
+      });
+    }
   };
   const {
     values,

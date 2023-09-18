@@ -2,7 +2,7 @@
 import { useState } from "react";
 import DestinationResult from "@/components/DestinationResult";
 
-const DestinationsClient = () => {
+const DestinationsClient = ({ session }) => {
   const [input, setInput] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +26,7 @@ const DestinationsClient = () => {
             <i className="ri-search-2-line text-xl group-hover:text-2xl transition-all"></i>
           </button>
         </form>
-        {input && <DestinationResult country={input} />}
+        {input && <DestinationResult country={input} session={session} />}
       </div>
     </div>
   );
