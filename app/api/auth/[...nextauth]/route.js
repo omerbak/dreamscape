@@ -34,7 +34,7 @@ export const nextOptions = {
         console.log("authorize");
         console.log("authorize", credentials);
         try {
-          const url = `http://localhost:3001/user/getUser?email=${credentials.email}`;
+          const url = `https://dreamscape-api-iswd.onrender.com/user/getUser?email=${credentials.email}`;
           const res = await fetch(url);
           const user = await res.json();
           console.log(user);
@@ -75,14 +75,17 @@ export const nextOptions = {
       if (account?.provider === "credentials") return true;
 
       try {
-        const res = await fetch("http://localhost:3001/user/addUser", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email: profile.email,
-            role: "user",
-          }),
-        });
+        const res = await fetch(
+          "https://dreamscape-api-iswd.onrender.com/user/addUser",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: profile.email,
+              role: "user",
+            }),
+          }
+        );
         /* console.log("signin callback res", res); */
         if (res.status === 200 || res.status === 409) return true;
         return false;
@@ -104,7 +107,7 @@ export const nextOptions = {
 
       if (user) {
         const res = await fetch(
-          `http://localhost:3001/user/getUser?email=${user.email}`
+          `https://dreamscape-api-iswd.onrender.com/user/getUser?email=${user.email}`
         );
         const userDB = await res.json();
         console.log("jwt userDB", userDB);
