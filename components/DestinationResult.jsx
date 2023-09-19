@@ -5,6 +5,7 @@ import DestinationCard from "./DestinationCard";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const DestinationResult = ({ country, session }) => {
+  country = country.trim().toLowerCase();
   const { data, error, isLoading } = useSWR(
     `https://dreamscape-api-iswd.onrender.com/destinations/getDestination?country=${country}`,
     fetcher
