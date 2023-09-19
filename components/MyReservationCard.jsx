@@ -9,11 +9,11 @@ const ReservationCard = ({ result, userEmail, mutate }) => {
   const [loading, setLoding] = useState(false);
 
   async function removeReservation(id) {
-    console.log("remove reservation");
+    /* console.log("remove reservation"); */
     setLoding(true);
-    console.log(id, userEmail);
+    /* console.log(id, userEmail); */
     const res = await fetch(
-      `http://localhost:3001/destinations/removeDestination`,
+      `https://dreamscape-api-iswd.onrender.com/destinations/removeDestination`,
       {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
@@ -23,7 +23,7 @@ const ReservationCard = ({ result, userEmail, mutate }) => {
         }),
       }
     );
-    console.log(res);
+    /*  console.log(res); */
     if (res.status == 200) {
       toast.success("Reservation cancelled successfully", {
         position: "top-center",

@@ -10,16 +10,19 @@ const DestinationCard = ({ result, userEmail }) => {
 
   async function reserve(id) {
     setLoding(true);
-    console.log(id, userEmail);
-    const res = await fetch("http://localhost:3001/user/addReservation", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        destId: id,
-        userEmail: userEmail,
-      }),
-    });
-    console.log(res);
+    /* console.log(id, userEmail); */
+    const res = await fetch(
+      "https://dreamscape-api-iswd.onrender.com/user/addReservation",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          destId: id,
+          userEmail: userEmail,
+        }),
+      }
+    );
+    /* console.log(res); */
     if (res.status == 200) {
       toast.success("Your reservation added successfully", {
         position: "top-center",
@@ -43,6 +46,7 @@ const DestinationCard = ({ result, userEmail }) => {
         className="absolute w-full h-full object-cover"
         fill
         sizes="400px"
+        alt={title}
       />
       <div className="absolute w-full h-1/4 bg-[rgba(37,47,19,0.58)] bottom-0 left-0 px-2 flex flex-col justify-end group-hover:h-full transition-all ">
         <div className="flex justify-between text-gray-300 mb-3 ">

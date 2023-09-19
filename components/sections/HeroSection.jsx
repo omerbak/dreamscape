@@ -97,8 +97,9 @@ const HeroSection = () => {
           <Link href="/destinations">
             <motion.button
               variants={buttonVariants}
-              initial="hiddwhileHover={{ scale: 1.1 }}en"
+              initial="hidden"
               animate="show"
+              whileHover={{ scale: 1.1 }}
               className="flex justify-between items-center gap-3 bg-mainColor md:py-3 md:px-7 py-2 px-5 rounded-md mb-6"
             >
               <span className="block text-white font-medium text-md md:text-lg tracking-wide">

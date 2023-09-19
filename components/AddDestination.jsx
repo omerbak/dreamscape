@@ -30,7 +30,7 @@ const AddDestination = ({ session }) => {
     //console.log(...formData);
     try {
       const res = await fetch(
-        "http://localhost:3001/destinations/addDestination",
+        "https://dreamscape-api-iswd.onrender.com/destinations/addDestination",
         {
           method: "POST",
           body: formData,

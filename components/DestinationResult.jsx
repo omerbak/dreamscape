@@ -6,10 +6,10 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const DestinationResult = ({ country, session }) => {
   const { data, error, isLoading } = useSWR(
-    `http://localhost:3001/destinations/getDestination?country=${country}`,
+    `https://dreamscape-api-iswd.onrender.com/destinations/getDestination?country=${country}`,
     fetcher
   );
-  console.log(data);
+  /* console.log(data); */
   if (error)
     return (
       <div className="container mx-auto px-4 sm:px-6 lg:px-20 text-center text-white">

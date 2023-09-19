@@ -8,15 +8,17 @@ import { ToastContainer } from "react-toastify";
 import { signInSchema } from "@/lib/signinSchema";
 import { signIn } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
+import { redirect } from "next/navigation";
 
 const SignInForm = () => {
   const searchParams = useSearchParams();
   const loginErorr = searchParams.get("error");
-  if (loginErorr) {
+  /* if (loginErorr) {
     toast.error("Wrong Password Or Email", {
       position: "top-center",
     });
-  }
+    
+  } */
   const onSubmit = async (values, actions) => {
     console.log(values);
     try {
@@ -107,7 +109,7 @@ const SignInForm = () => {
               {errors.password && touched.password ? errors.password : null}
             </span>
           </div>
-
+          {loginErorr && <p className="text-red-300">Wrong Email or Passwor</p>}
           <motion.button
             className="px-7 py-3 bg-mainColor text-white rounded-md mt-3 font-semibold flex justify-center items-center"
             whileHover={{ scale: 1.1 }}

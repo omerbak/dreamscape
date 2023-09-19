@@ -9,15 +9,18 @@ import { signUpSchema } from "@/lib/signupSchema";
 const SignUnForm = () => {
   const onSubmit = async (values, actions) => {
     try {
-      const res = await fetch("http://localhost:3001/user/addUser", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: values.email,
-          password: values.password,
-          role: "user",
-        }),
-      });
+      const res = await fetch(
+        "https://dreamscape-api-iswd.onrender.com/user/addUser",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: values.email,
+            password: values.password,
+            role: "user",
+          }),
+        }
+      );
       console.log("signUp form: ", res);
       if (res.status === 200) {
         toast.success("You are singup successfully, Please signIn now", {

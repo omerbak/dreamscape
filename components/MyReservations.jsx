@@ -7,7 +7,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const MyReservations = ({ session }) => {
   const userEmail = session?.user?.email;
   const { data, error, isLoading, mutate } = useSWR(
-    `http://localhost:3001/destinations/getMyDestinations?userEmail=${userEmail}`,
+    `https://dreamscape-api-iswd.onrender.com/destinations/getMyDestinations?userEmail=${userEmail}`,
     fetcher
   );
 
@@ -25,7 +25,7 @@ const MyReservations = ({ session }) => {
     );
 
   return (
-    <div className="flex flex-wrap w-full ">
+    <div className="flex flex-wrap w-full gap-2  md:content-start justify-center ">
       {data.length > 0 ? (
         data.map((result) => (
           <ReservationCard

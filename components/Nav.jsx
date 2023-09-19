@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import MobileMenu from "./MobileMenu";
+import { usePathname } from "next/navigation";
 
 const navVarinats = {
   hidden: {
@@ -25,11 +26,12 @@ const navVarinats = {
 const Nav = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [changeNavBg, setChangeNavBg] = useState(false);
+  const pathname = usePathname();
   const navRef = useRef();
   let navHeight;
 
   const { data: session, status } = useSession();
-  console.log("session", session);
+
   function checkScroll() {
     if (window.scrollY >= navHeight) {
       setChangeNavBg(true);
@@ -72,7 +74,9 @@ const Nav = () => {
                 <ul className="flex items-center gap-6 text-sm">
                   <li>
                     <Link
-                      className="text-white  transition hover:text-mainColor"
+                      className={`transition hover:text-mainColor ${
+                        pathname === "/" ? "text-mainColor" : "text-white"
+                      }`}
                       href="/"
                     >
                       Home
@@ -80,7 +84,11 @@ const Nav = () => {
                   </li>
                   <li>
                     <Link
-                      className="text-white  transition hover:text-mainColor"
+                      className={`transition hover:text-mainColor ${
+                        pathname === "/destinations"
+                          ? "text-mainColor"
+                          : "text-white"
+                      }`}
                       href="/destinations"
                     >
                       Destinations
@@ -103,7 +111,11 @@ const Nav = () => {
                       </li>
                       <li>
                         <div
-                          className="bg-transparent rounded-md px-5 py-2  border-2 text-white  border-transparent hover:border-white transition-all cursor-pointer "
+                          className={`transition hover:text-mainColor cursor-pointer ${
+                            pathname === "/sign"
+                              ? "text-mainColor"
+                              : "text-white"
+                          }`}
                           onClick={() => signOut({ callbackUrl: "/" })}
                         >
                           SignOut
@@ -113,7 +125,9 @@ const Nav = () => {
                   ) : (
                     <li>
                       <Link
-                        className="bg-transparent rounded-md px-5 py-2  border-2 text-white  border-transparent hover:border-white  transition-all cursor-pointer "
+                        className={`transition hover:text-mainColor ${
+                          pathname === "/sign" ? "text-mainColor" : "text-white"
+                        }`}
                         href="/sign"
                       >
                         SignIn
