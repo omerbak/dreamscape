@@ -73,7 +73,7 @@ export const nextOptions = {
       }); */
 
       if (account?.provider === "credentials") return true;
-
+      console.log(profile);
       try {
         const res = await fetch(
           "https://dreamscape-api-iswd.onrender.com/user/addUser",
@@ -94,6 +94,7 @@ export const nextOptions = {
         return false;
       }
     },
+
     async jwt({ token, profile, user, session, account }) {
       console.log("jwt callback: ", { token, profile, user, session, account });
 

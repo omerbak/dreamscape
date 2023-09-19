@@ -130,7 +130,7 @@ const Nav = () => {
                         }`}
                         href="/sign"
                       >
-                        SignIn
+                        Sign
                       </Link>
                     </li>
                   )}
