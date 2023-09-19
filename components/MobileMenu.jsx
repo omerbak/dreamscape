@@ -3,6 +3,8 @@ import whiteLogo from "../public/Dreamscape-logo/vector/default-monochrome-white
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import AccountImg from "../public/images_compressed/account.jpg";
+import { signOut } from "next-auth/react";
 
 const mobileVariants = {
   hidden: {
@@ -16,7 +18,7 @@ const mobileVariants = {
   },
 };
 
-const MobileMenu = ({ showMobileMenu, setShowMobileMenu, user }) => {
+const MobileMenu = ({ showMobileMenu, setShowMobileMenu, session }) => {
   return (
     <motion.nav
       variants={mobileVariants}
@@ -55,9 +57,41 @@ const MobileMenu = ({ showMobileMenu, setShowMobileMenu, user }) => {
             Destinations
           </Link>
         </li>
-        {user && (
-          <li className="w-[44px] h-[44px] relative rounded-full overflow-hidden">
-            <Image src={user.image} fill />
+        {session?.user ? (
+          <>
+            <li
+              className="w-[44px] h-[44px] relative rounded-full overflow-hidden cursor-pointer"
+              onClick={() => setShowMobileMenu(false)}
+            >
+              <Link href="/account">
+                <Image
+                  src={session.user?.image ? session.user.image : AccountImg}
+                  fill
+                  className=" object-cover"
+                />
+              </Link>
+            </li>
+            <li>
+              <div
+                className={`hover:text-white  transition text-darkBg text-xl font-semibold cursor-pointer`}
+                onClick={() => {
+                  setShowMobileMenu(false);
+                  signOut({ callbackUrl: "/" });
+                }}
+              >
+                SignOut
+              </div>
+            </li>
+          </>
+        ) : (
+          <li onClick={() => setShowMobileMenu(false)}>
+            <Link
+              className={`hover:text-white  transition text-darkBg text-xl font-semibold
+                          `}
+              href="/sign"
+            >
+              Sign
+            </Link>
           </li>
         )}
 

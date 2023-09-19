@@ -168,7 +168,7 @@ const Nav = () => {
             <MobileMenu
               showMobileMenu={showMobileMenu}
               setShowMobileMenu={setShowMobileMenu}
-              user={session?.user}
+              session={session}
             />
           )}
         </AnimatePresence>
