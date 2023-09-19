@@ -1,10 +1,13 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import logo from "../public/Dreamscape-logo/vector/default-monochrome.svg";
-import whiteLogo from "../public/Dreamscape-logo/vector/default-monochrome-white.svg";
 import Image from "next/image";
+import AccountImg from "../public/images_compressed/account.jpg";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
+import MobileMenu from "./MobileMenu";
+import { usePathname } from "next/navigation";
 
 const navVarinats = {
   hidden: {
@@ -19,23 +22,15 @@ const navVarinats = {
     },
   },
 };
-const mobileVariants = {
-  hidden: {
-    y: -100,
-    opacity: 0,
-  },
-  show: {
-    y: 0,
-    opacity: 1,
-    transition: {},
-  },
-};
 
 const Nav = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [changeNavBg, setChangeNavBg] = useState(false);
+  const pathname = usePathname();
   const navRef = useRef();
   let navHeight;
+
+  const { data: session, status } = useSession();
 
   function checkScroll() {
     if (window.scrollY >= navHeight) {
@@ -57,7 +52,7 @@ const Nav = () => {
     <motion.header
       aria-label="Site Header"
       className={`fixed top-0 w-full z-[1000] transition py-2 ${
-        changeNavBg && "bg-white/10 backdrop-blur-lg"
+        changeNavBg && "bg-white/10  backdrop-blur"
       } `}
       variants={navVarinats}
       initial="hidden"
@@ -79,48 +74,66 @@ const Nav = () => {
                 <ul className="flex items-center gap-6 text-sm">
                   <li>
                     <Link
-                      className="text-white  transition hover:text-mainColor"
+                      className={`transition hover:text-mainColor ${
+                        pathname === "/" ? "text-mainColor" : "text-white"
+                      }`}
+                      href="/"
+                    >
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className={`transition hover:text-mainColor ${
+                        pathname === "/destinations"
+                          ? "text-mainColor"
+                          : "text-white"
+                      }`}
                       href="/destinations"
                     >
                       Destinations
                     </Link>
                   </li>
-
-                  <li>
-                    <Link
-                      className="text-white  transition hover:text-mainColor"
-                      href="/#aboutUs"
-                    >
-                      About us
-                    </Link>
-                  </li>
-
-                  <li>
-                    <Link
-                      className="text-white  transition hover:text-mainColor"
-                      href="/#services"
-                    >
-                      Services
-                    </Link>
-                  </li>
-
-                  <li>
-                    <Link
-                      className="text-white  transition hover:text-mainColor"
-                      href="/#testimonials"
-                    >
-                      Testimonials
-                    </Link>
-                  </li>
-
-                  <li>
-                    <Link
-                      className="text-white transition hover:text-mainColor"
-                      href="/#contact"
-                    >
-                      Contact
-                    </Link>
-                  </li>
+                  {session?.user ? (
+                    <>
+                      <li className="w-[44px] h-[44px] relative rounded-full overflow-hidden cursor-pointer">
+                        <Link href="/account">
+                          <Image
+                            src={
+                              session.user?.image
+                                ? session.user.image
+                                : AccountImg
+                            }
+                            fill
+                            className=" object-cover"
+                          />
+                        </Link>
+                      </li>
+                      <li>
+                        <div
+                          className={`transition hover:text-mainColor cursor-pointer ${
+                            pathname === "/sign"
+                              ? "text-mainColor"
+                              : "text-white"
+                          }`}
+                          onClick={() => signOut({ callbackUrl: "/" })}
+                        >
+                          SignOut
+                        </div>
+                      </li>
+                    </>
+                  ) : (
+                    <li>
+                      <Link
+                        className={`transition hover:text-mainColor ${
+                          pathname === "/sign" ? "text-mainColor" : "text-white"
+                        }`}
+                        href="/sign"
+                      >
+                        SignIn
+                      </Link>
+                    </li>
+                  )}
                 </ul>
               </nav>
 
@@ -152,78 +165,11 @@ const Nav = () => {
         </div>
         <AnimatePresence>
           {showMobileMenu && (
-            <motion.nav
-              variants={mobileVariants}
-              initial="hidden"
-              animate="show"
-              exit={{
-                opacity: 0,
-                y: -700,
-                transition: {},
-              }}
-              aria-label="Site Nav"
-              className="fixed md:hidden w-full h-[100vh] top bg-lightBg text-darkBg top-0 left-0 z-[2000]"
-            >
-              <div
-                className="absolute  right-2 top-2 "
-                onClick={() => setShowMobileMenu(!showMobileMenu)}
-              >
-                <button className="rounded  p-2  transition hover:text-white">
-                  <i class="ri-close-line text-2xl"></i>
-                </button>
-              </div>
-              <ul className="flex flex-col items-center justify-center bg-mainColor h-full gap-6 text-sm">
-                <li onClick={() => setShowMobileMenu(false)}>
-                  <a
-                    className=" hover:text-white  transition text-darkBg text-xl font-semibold"
-                    href="#destinations"
-                  >
-                    Destinations
-                  </a>
-                </li>
-
-                <li onClick={() => setShowMobileMenu(false)}>
-                  <a
-                    className="hover:text-white  transition text-darkBg text-xl font-semibold"
-                    href="#aboutUs"
-                  >
-                    About us
-                  </a>
-                </li>
-
-                <li onClick={() => setShowMobileMenu(false)}>
-                  <a
-                    className="hover:text-white  transition text-darkBg text-xl font-semibold"
-                    href="#services"
-                  >
-                    Services
-                  </a>
-                </li>
-
-                <li onClick={() => setShowMobileMenu(false)}>
-                  <a
-                    className="hover:text-white  transition text-darkBg text-xl font-semibold"
-                    href="#testimonials"
-                  >
-                    Testimonials
-                  </a>
-                </li>
-
-                <li onClick={() => setShowMobileMenu(false)}>
-                  <a
-                    className="hover:text-white  transition text-darkBg text-xl font-semibold"
-                    href="contact"
-                  >
-                    Contact
-                  </a>
-                </li>
-                <li onClick={() => setShowMobileMenu(false)}>
-                  <a href="#hero-section">
-                    <Image src={whiteLogo} className=" w-[300px] mt-36" />
-                  </a>
-                </li>
-              </ul>
-            </motion.nav>
+            <MobileMenu
+              showMobileMenu={showMobileMenu}
+              setShowMobileMenu={setShowMobileMenu}
+              user={session?.user}
+            />
           )}
         </AnimatePresence>
       </div>

@@ -1,7 +1,8 @@
+import Account from "@/components/Account";
 import { getServerSession } from "next-auth";
-import DestinationsClient from "@/components/DestinationsClient";
 import { redirect } from "next/navigation";
 import { nextOptions } from "../api/auth/[...nextauth]/route";
+
 const page = async () => {
   const session = await getServerSession(nextOptions);
   if (!session) {
@@ -9,7 +10,7 @@ const page = async () => {
   }
   return (
     <>
-      <DestinationsClient session={session} />
+      <Account session={session} />
     </>
   );
 };
