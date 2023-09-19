@@ -51,18 +51,18 @@ const SignInForm = () => {
   return (
     <div className="p-6">
       <div className=" bg-darkBg2 rounded-md">
-        <button
+        {/*  <button
           className="border-2 border-mainColor py-2 px-6 rounded-md mb-4 block mx-auto"
           onClick={() =>
-            signIn("google" /* , { callbackUrl: "/destinations" } */)
+            signIn("google" , { callbackUrl: "/destinations" })
           }
         >
           <i className="ri-google-fill text-mainColor">
             <span className="text-white">oogle</span>
           </i>
-        </button>
+        </button> */}
         <form action="" className="w-full" onSubmit={handleSubmit}>
-          <div className="w-3/4  mx-auto mb-4 text-center text-white">Or</div>
+          {/* <div className="w-3/4  mx-auto mb-4 text-center text-white">Or</div> */}
           <div className="w-full gap-2 mb-4">
             <label htmlFor="email" className="block text-mainColor mb-1">
               Email
