@@ -1,6 +1,6 @@
 # Dreamscape Travel Agency
-It is a full-stack next-js web app where users can contact the agency, learn more about the agency and discover available destinations.
-The goal of this project was to go through the process of designing and development from scratch using the latest tools and technologies.
+It is a full-stack next-js web app with role-based authentification where users can contact the agency, learn more about the agency, reserve and discover available destinations.
+Admins can perform more actions like adding new destinations.The goal of this project was to go through the process of designing and development from scratch using the latest tools and technologies.
 
 **link to project:** https://dreamscape-travel-agency.netlify.app
 <br></br>
@@ -11,6 +11,7 @@ The goal of this project was to go through the process of designing and developm
 * Figma for design
 * Next-js-13 for the frotend
 * Express-js for the backend
+* NextAuth for authentification.
 * MongoDB for the database
 * Tailwind css for styling
 * Formik and Yup for form validation
@@ -21,6 +22,7 @@ The goal of this project was to go through the process of designing and developm
 
 ## Lessons Learned: 
 * This project helped me deepen my understanding of next-js 13 and how to use the differents methods of rendering.
+* Building a role-based authentification made understand NextAuth in depth.
 * I learned the importance of Image optimization and how next-js can handle the process.
 * I also learned how to use tailwindcss to perform complex styling.
 * I alson learned to build RestApi usnig MVC architecture that performs CRUD operation on MongoDB database.
