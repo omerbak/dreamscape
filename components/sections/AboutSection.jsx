@@ -14,18 +14,18 @@ const AboutSection = () => {
             trips
           </SectionHeader>
           <div className="flex flex-col md:flex-row items-center gap-10">
-            <div className=" md:w-1/3 w-2/3 min-h-[500px] relative ">
+            <div className=" md:w-1/3 w-full min-h-[500px] relative ">
               <Image
                 src={image1}
                 alt="mountain image"
-                className="w-[60%] h-[300px] absolute top-0 left-0 z-20 object-cover rounded-md"
+                className="w-[60%] md:w-[70%] h-[300px] absolute top-0 left-0 z-20 object-cover rounded-md"
                 placeholder="blur"
                 sizes="(max-width: 768px) 40vw, 25vw"
               />
               <Image
                 src={image2}
                 alt="mile image"
-                className="w-[60%] h-[350px] absolute bottom-10 md:bottom-0 right-0 z-20 object-cover rounded-md"
+                className="w-[60%] md:w-[70%] h-[350px] absolute bottom-10 md:bottom-0 right-0 z-20 object-cover rounded-md"
               />
             </div>
             <div className="md:w-2/3 text-white">

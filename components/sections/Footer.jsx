@@ -37,7 +37,7 @@ const Footer = () => {
         </div>
         <div className="w-full h-[1px] bg-lightBg my-8"></div>
         <div className=" text-center">
-          <p className="font-semibold text-xl mb-6">
+          <p className="font-semibold text-lg md:text-xl mb-6">
             Copyrights 2023 | All Rights Reserved
           </p>
           <p>
