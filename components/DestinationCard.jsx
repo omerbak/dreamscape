@@ -3,41 +3,11 @@ import Image from "next/image";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import { useState } from "react";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 
-const DestinationCard = ({ result, userEmail }) => {
+const DestinationCard = ({ result }) => {
   const { city, country, period, price, photos, title, _id: id } = result;
-  const [loading, setLoding] = useState(false);
-
-  async function reserve(id) {
-    setLoding(true);
-    /* console.log(id, userEmail); */
-    const res = await fetch(
-      "https://dreamscape-api-iswd.onrender.com/user/addReservation",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          destId: id,
-          userEmail: userEmail,
-        }),
-      }
-    );
-    /* console.log(res); */
-    if (res.status == 200) {
-      toast.success("Your reservation added successfully", {
-        position: "top-center",
-      });
-    } else if (res.status == 204) {
-      toast.error("This destination is already reserved", {
-        position: "top-center",
-      });
-    } else {
-      toast.error("Server error, can't perform this action at the moment", {
-        position: "top-center",
-      });
-    }
-    setLoding(false);
-  }
 
   return (
     <div className="bg-darkBg2 p-4 w-[250px] h-[200px] md:h-[300px] md:w-[350px] rounded-md relative overflow-hidden group">
@@ -67,12 +37,11 @@ const DestinationCard = ({ result, userEmail }) => {
           </p>
         </div>
       </div>
-      <button
-        className="absolute top-1/2 left-1/2 px-4 py-2 md:px-6 md:py-3 -translate-x-1/2 -translate-y-1/2 bg-mainColor text-white hadow-md  rounded-md z-10 opacity-0 group-hover:opacity-100  transition-all  hover:scale-110"
-        onClick={() => reserve(id)}
-      >
-        {loading ? "Loading..." : "Reserve"}
-      </button>
+      <Link href={`/destinations/${id}`}>
+        <button className="absolute top-1/2 left-1/2 px-4 py-2 md:px-6 md:py-3 -translate-x-1/2 -translate-y-1/2 bg-mainColor text-white hadow-md  rounded-md z-10 opacity-0 group-hover:opacity-100  transition-all  hover:scale-110">
+          See Details
+        </button>
+      </Link>
       <ToastContainer />
     </div>
   );

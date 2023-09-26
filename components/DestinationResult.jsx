@@ -1,16 +1,17 @@
 "use client";
 import useSWR from "swr";
 import DestinationCard from "./DestinationCard";
+import Link from "next/link";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const DestinationResult = ({ country, session }) => {
   country = country.trim().toLowerCase();
   const { data, error, isLoading } = useSWR(
-    `https://dreamscape-api-iswd.onrender.com/destinations/getDestination?country=${country}`,
+    `http://localhost:3001/destinations/getDestination?country=${country}`,
     fetcher
   );
-  /* console.log(data); */
+  console.log(data);
   if (error)
     return (
       <div className="container mx-auto px-4 sm:px-6 lg:px-20 text-center text-white">
@@ -34,11 +35,7 @@ const DestinationResult = ({ country, session }) => {
     <div className="container mx-auto px-4 sm:px-6  ">
       <div className="w-full min-h-[400px] rounded-md flex  items-start flex-wrap gap-3">
         {data.map((result) => (
-          <DestinationCard
-            result={result}
-            key={result._id}
-            userEmail={session?.user?.email}
-          />
+          <DestinationCard result={result} key={result._id} />
         ))}
       </div>
     </div>

@@ -33,7 +33,7 @@ const Nav = () => {
   const { data: session, status } = useSession();
 
   function checkScroll() {
-    if (window.scrollY >= navHeight) {
+    if (window.scrollY >= 10) {
       setChangeNavBg(true);
     } else {
       setChangeNavBg(false);
