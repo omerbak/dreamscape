@@ -34,4 +34,10 @@ html {
   .page-container {
     @apply container mx-auto px-4 sm:px-6 lg:px-20;
   }
+  .scroll-container {
+    scroll-snap-type: x mandatory;
+  }
+  .scroll-child {
+    scroll-snap-align: start;
+  }
 }

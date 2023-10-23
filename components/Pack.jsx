@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Pack = ({ image, city, days }) => {
   return (
-    <motion.div className="relative h-[370px] rounded-md w-[270px] md:w-[350px]  overflow-hidden pointer-events-none">
+    <motion.div className="relative h-[370px] rounded-md w-[270px] md:w-[350px]  overflow-hidden pointer-events-none scroll-child">
       <Image
         src={image}
         alt="city of destination"
