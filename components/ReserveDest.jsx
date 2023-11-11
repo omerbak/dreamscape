@@ -3,11 +3,13 @@ import { useState } from "react";
 import NumberInput from "./NumberInput";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const ReserveDest = ({ destId, price, title, session }) => {
   const userEmail = session?.user?.email;
   const [num, setNum] = useState(1);
   const [loading, setLoding] = useState(false);
+  const router = useRouter();
 
   const increaseNum = () => {
     setNum((prev) => prev + 1);
@@ -22,21 +24,27 @@ const ReserveDest = ({ destId, price, title, session }) => {
   };
 
   async function reserve(id) {
+    //https://dreamscape-api-iswd.onrender.com/user/addReservation
     setLoding(true);
     /* console.log(id, userEmail); */
-    const res = await fetch(
-      "https://dreamscape-api-iswd.onrender.com/user/addReservation",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          destId: id,
-          userEmail: userEmail,
-        }),
-      }
-    );
+    const res = await fetch("http://localhost:3001/destinations/checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        destId: id,
+        userEmail: userEmail,
+        numPeople: num,
+        title: title,
+      }),
+    });
+    if (res.status === 200) {
+      const data = await res.json();
+      console.log(data.url);
+      setLoding(false);
+      router.push(data.url);
+    }
     /* console.log(res); */
-    if (res.status == 200) {
+    /*  if (res.status == 200) {
       toast.success("Your reservation added successfully", {
         position: "top-center",
       });
@@ -47,9 +55,8 @@ const ReserveDest = ({ destId, price, title, session }) => {
     } else {
       toast.error("Server error, can't perform this action at the moment", {
         position: "top-center",
-      });
-    }
-    setLoding(false);
+      }); 
+    }*/
   }
 
   return (
